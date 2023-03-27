@@ -13,8 +13,17 @@ public class AnalyticHierarchyProcess extends SystematicReviewMethodology {
 
     @Override
     public Vector review() {
-
-        return null;
+        AHPNode node = ahpSystemData.getRoot();
+        while (node.children.size() != 0) {
+            node = node.children.get(0);
+        }
+        node = node.getParent().get(0);
+        List<AHPNode> finalNode = node.children;
+        double[] data = new double[finalNode.size()];
+        for (int i = 0; i < finalNode.size(); i++) {
+            data[i] = finalNode.get(i).getWeight();
+        }
+        return new Vector(finalNode.size(), data);
     }
 
     public void addConnect(String parent, List<String> children, double[][] decideMat){

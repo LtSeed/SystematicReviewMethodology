@@ -93,7 +93,6 @@ public class AHPNode implements SystemMeta {
             w += ahpNode.getWeight() * ahpNode.ahpNodeConnection.weight_0.get(i);
             //System.out.println(this.name+": "+ahpNode.getWeight()+" X "+ahpNode.ahpNodeConnection.weight_0.get(i));
         }
-
         return w;
     }
     List<AHPNode> setChildren(List<String> names, Matrix decideMatrix){

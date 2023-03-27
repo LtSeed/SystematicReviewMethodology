@@ -41,11 +41,21 @@ public class Vector extends Matrix{
             this.data[i][0] /= other.get(i);
         }
     }
+    public void pointMultiply(Vector other) {
+        if(other.getSize() != getSize()) return;
+        for (int i = 0; i < getSize(); i++) {
+            this.data[i][0] *= other.get(i);
+        }
+    }
 
     public void modify() {
         double adding = getAdding();
         for (int i = 0; i < getSize(); i++) {
             data[i][0] /= adding;
         }
+    }
+
+    public void set(int i, double v) {
+        setMatrix(i+1,1,v);
     }
 }

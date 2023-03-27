@@ -6,7 +6,7 @@ import org.SRM.SystematicReviewMethodology.AHP.AnalyticHierarchyProcess;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class AHPExample {
     public static void main(String[] args) {
         AnalyticHierarchyProcess ahp = new AnalyticHierarchyProcess("综合效益");
         List<String> b = new ArrayList<>();

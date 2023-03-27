@@ -6,8 +6,6 @@ import org.SRM.SystematicReviewMethodology.SystemMeta;
 
 import java.util.*;
 
-import static java.lang.Math.pow;
-
 public class AHPNode implements SystemMeta {
 
     static class AHPNodeConnection {
@@ -16,24 +14,14 @@ public class AHPNode implements SystemMeta {
 
         AHPNodeConnection (Matrix a){
             A = a;
-            int n = a.getCol();
-            System.out.println(a.toString());
-            double[] weight = new double[n];
-            for (int i = 0; i < n; i++) {
-                weight[i] = 1;
-                for (int j = 0; j < n; j++) {
-                    weight[i] *= a.get(i+1,j+1);
-                }
-                weight[i] = pow(weight[i], 1.0 / n);
-            }
-            this.weight_0 = new Vector(n, weight);
+            this.weight_0 = a.toWeightByRootMeanSquare();
             System.out.println(weight_0);
             this.weight_0.modify();
             System.out.println(weight_0);
         }
 
         public boolean checkConsistency(boolean useRI){
-            Matrix multiply = A.multiply(weight_0);
+            Matrix multiply = A.crossMultiply(weight_0);
             Vector vector = (Vector) multiply;
             vector.pointDivide(weight_0);
             double lambda = vector.getAvenge();
